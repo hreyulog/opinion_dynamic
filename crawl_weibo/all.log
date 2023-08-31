@@ -1,0 +1,3 @@
+2023-08-31 13:56:55,266 - spider.py - INFO - 请先配置当前目录(C:\Users\hWX1082773\PycharmProjects\pythonProject\crawl_weibo)下的config.json文件，如果想了解config.json参数的具体意义及配置方法，请访问
+https://github.com/dataabc/weiboSpider#2程序设置
+2023-08-31 13:57:11,757 - info_parser.py - WARNING - cookie错误或已过期,请按照README中方法重新获取
