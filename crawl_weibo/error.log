@@ -1,1 +1,677 @@
 2023-08-31 13:57:11,757 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2023-08-31 17:38:31,550 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2023-08-31 17:39:43,192 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2023-08-31 17:41:01,455 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2023-08-31 18:04:31,767 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /1871821935/profile (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 619, in connect
+    self.sock = sock = self._connect_tls_proxy(self.host, sock)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 675, in _connect_tls_proxy
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 783, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\ssl_.py", line 469, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\ssl_.py", line 513, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /1871821935/profile (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /1871821935/profile (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+2023-08-31 18:04:31,817 - ERROR - index_parser.py[:44] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 33, in get_user
+    user_id = self._get_user_id()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 20, in _get_user_id
+    url_list = self.selector.xpath("//div[@class='u']//a")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 18:04:31,940 - ERROR - spider.py[:221] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2023-08-31 18:04:31,943 - ERROR - csv_writer.py[:25] - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\csv_writer.py", line 20, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2023-08-31 18:04:31,945 - ERROR - spider.py[:221] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2023-08-31 18:04:31,946 - ERROR - spider.py[:309] - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 292, in get_one_user
+    self.write_user(self.user)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 125, in write_user
+    writer.write_user(user)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2023-08-31 18:04:32,320 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /2022252207/profile (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000024F3E4258A0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1092, in _validate_conn
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000024F3E4258A0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /2022252207/profile (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000024F3E4258A0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /2022252207/profile (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000024F3E4258A0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+2023-08-31 18:04:32,331 - ERROR - index_parser.py[:44] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 33, in get_user
+    user_id = self._get_user_id()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 20, in _get_user_id
+    url_list = self.selector.xpath("//div[@class='u']//a")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 18:04:32,334 - ERROR - spider.py[:221] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2023-08-31 18:04:32,336 - ERROR - csv_writer.py[:25] - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\csv_writer.py", line 20, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2023-08-31 18:04:32,337 - ERROR - spider.py[:221] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2023-08-31 18:04:32,338 - ERROR - spider.py[:309] - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 292, in get_one_user
+    self.write_user(self.user)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 125, in write_user
+    writer.write_user(user)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2023-08-31 18:10:05,394 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2023-08-31 19:18:41,872 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /1871821935/profile (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 619, in connect
+    self.sock = sock = self._connect_tls_proxy(self.host, sock)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 675, in _connect_tls_proxy
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 783, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\ssl_.py", line 469, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\ssl_.py", line 513, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /1871821935/profile (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /1871821935/profile (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+2023-08-31 19:18:41,890 - ERROR - index_parser.py[:44] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 33, in get_user
+    user_id = self._get_user_id()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 20, in _get_user_id
+    url_list = self.selector.xpath("//div[@class='u']//a")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 19:18:41,911 - ERROR - spider.py[:221] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2023-08-31 19:18:41,915 - ERROR - csv_writer.py[:25] - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\csv_writer.py", line 20, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2023-08-31 19:18:41,917 - ERROR - spider.py[:221] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2023-08-31 19:18:41,919 - ERROR - spider.py[:309] - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 292, in get_one_user
+    self.write_user(self.user)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 125, in write_user
+    writer.write_user(user)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2023-08-31 19:21:54,353 - ERROR - spider.py[:305] - TxtWriter.__init__() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 287, in get_one_user
+    self.initialize_info(user_config)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 238, in initialize_info
+    TxtWriter(self._get_filepath('txt'), self.filter))
+TypeError: TxtWriter.__init__() takes 2 positional arguments but 3 were given
+2023-08-31 19:21:56,503 - ERROR - spider.py[:305] - TxtWriter.__init__() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 287, in get_one_user
+    self.initialize_info(user_config)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 238, in initialize_info
+    TxtWriter(self._get_filepath('txt'), self.filter))
+TypeError: TxtWriter.__init__() takes 2 positional arguments but 3 were given
+2023-08-31 19:22:39,490 - ERROR - spider.py[:305] - 'TxtWriter' object has no attribute 'weibo_header'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 296, in get_one_user
+    self.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 118, in write_weibo
+    writer.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 33, in write_weibo
+    if self.weibo_header:
+AttributeError: 'TxtWriter' object has no attribute 'weibo_header'
+2023-08-31 19:23:19,911 - ERROR - spider.py[:305] - 'TxtWriter' object has no attribute 'weibo_header'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 296, in get_one_user
+    self.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 118, in write_weibo
+    writer.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 33, in write_weibo
+    if self.weibo_header:
+AttributeError: 'TxtWriter' object has no attribute 'weibo_header'
+2023-08-31 19:26:41,715 - ERROR - spider.py[:304] - Can't instantiate abstract class TxtWriter with abstract method write_weibo
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 287, in get_one_user
+    self.initialize_info(user_config)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 238, in initialize_info
+    TxtWriter(self._get_filepath('txt')))
+TypeError: Can't instantiate abstract class TxtWriter with abstract method write_weibo
+2023-08-31 19:26:56,627 - ERROR - spider.py[:304] - Can't instantiate abstract class TxtWriter with abstract method write_weibo
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 287, in get_one_user
+    self.initialize_info(user_config)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 238, in initialize_info
+    TxtWriter(self._get_filepath('txt')))
+TypeError: Can't instantiate abstract class TxtWriter with abstract method write_weibo
+2023-08-31 19:27:49,462 - ERROR - spider.py[:302] - Can't instantiate abstract class TxtWriter with abstract method write_weibo
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 285, in get_one_user
+    self.initialize_info(user_config)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 236, in initialize_info
+    TxtWriter(self._get_filepath('txt')))
+TypeError: Can't instantiate abstract class TxtWriter with abstract method write_weibo
+2023-08-31 19:29:36,548 - ERROR - spider.py[:305] - 'TxtWriter' object has no attribute 'weibo_header'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 296, in get_one_user
+    self.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 118, in write_weibo
+    writer.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 34, in write_weibo
+    if self.weibo_header:
+AttributeError: 'TxtWriter' object has no attribute 'weibo_header'
+2023-08-31 19:30:00,326 - ERROR - spider.py[:305] - 'TxtWriter' object has no attribute 'weibo_header'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 296, in get_one_user
+    self.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 118, in write_weibo
+    writer.write_weibo(weibos)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\txt_writer.py", line 34, in write_weibo
+    if self.weibo_header:
+AttributeError: 'TxtWriter' object has no attribute 'weibo_header'
+2023-08-31 20:17:39,611 - WARNING - util.py[:102] - 当前账号没有浏览该视频的权限
+2023-08-31 20:17:39,613 - ERROR - page_parser.py[:306] - local variable 'video_url' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 304, in get_video_url
+    video_url = to_video_download_url(self.cookie, video_page_url)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 104, in to_video_download_url
+    return video_url
+UnboundLocalError: local variable 'video_url' referenced before assignment
+2023-08-31 20:39:52,038 - WARNING - util.py[:102] - 当前账号没有浏览该视频的权限
+2023-08-31 20:39:52,039 - ERROR - page_parser.py[:306] - local variable 'video_url' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 304, in get_video_url
+    video_url = to_video_download_url(self.cookie, video_page_url)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 104, in to_video_download_url
+    return video_url
+UnboundLocalError: local variable 'video_url' referenced before assignment
+2023-08-31 21:06:48,723 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxfQeh9YQ?rl=1 (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 776, in urlopen
+    self._prepare_proxy(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1041, in _prepare_proxy
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 619, in connect
+    self.sock = sock = self._connect_tls_proxy(self.host, sock)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 675, in _connect_tls_proxy
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 783, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\ssl_.py", line 469, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\ssl_.py", line 513, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "C:\Users\hWX1082773\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxfQeh9YQ?rl=1 (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxfQeh9YQ?rl=1 (Caused by ProxyError('Unable to connect to proxy', ConnectionAbortedError(10053, '你的主机中的软件中止了一个已建立的连接。', None, 10053, None)))
+2023-08-31 21:06:48,742 - ERROR - page_parser.py[:377] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 352, in extract_picture_urls
+    self.cookie, weibo_id).extract_preview_picture_list()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\mblog_picAll_parser.py", line 12, in extract_preview_picture_list
+    return self.selector.xpath('//img/@src')
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 21:06:48,835 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxdwUha6I?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2D8D0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1092, in _validate_conn
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001E241C2D8D0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxdwUha6I?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2D8D0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxdwUha6I?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2D8D0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+2023-08-31 21:06:48,847 - ERROR - page_parser.py[:377] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 352, in extract_picture_urls
+    self.cookie, weibo_id).extract_preview_picture_list()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\mblog_picAll_parser.py", line 12, in extract_preview_picture_list
+    return self.selector.xpath('//img/@src')
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 21:06:48,872 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxcM28sjZ?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2CA00>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1092, in _validate_conn
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001E241C2CA00>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxcM28sjZ?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2CA00>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxcM28sjZ?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2CA00>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+2023-08-31 21:06:48,899 - ERROR - page_parser.py[:377] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 352, in extract_picture_urls
+    self.cookie, weibo_id).extract_preview_picture_list()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\mblog_picAll_parser.py", line 12, in extract_preview_picture_list
+    return self.selector.xpath('//img/@src')
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 21:06:48,914 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxczPFKaV?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2E2C0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1092, in _validate_conn
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001E241C2E2C0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxczPFKaV?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2E2C0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /mblog/picAll/MxczPFKaV?rl=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2E2C0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+2023-08-31 21:06:48,931 - ERROR - page_parser.py[:377] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 352, in extract_picture_urls
+    self.cookie, weibo_id).extract_preview_picture_list()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\mblog_picAll_parser.py", line 12, in extract_preview_picture_list
+    return self.selector.xpath('//img/@src')
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 21:06:48,969 - ERROR - util.py[:45] - HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /2022252207/profile?page=233 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2E9E0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 1092, in _validate_conn
+    conn.connect()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 611, in connect
+    self.sock = sock = self._new_conn()
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001E241C2E9E0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+  File "D:\qcru\IQue\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /2022252207/profile?page=233 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2E9E0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 25, in handle_html
+    resp = requests.get(url, headers=headers)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\qcru\IQue\venv\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='weibo.cn', port=443): Max retries exceeded with url: /2022252207/profile?page=233 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001E241C2E9E0>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))
+2023-08-31 21:06:48,984 - ERROR - spider.py[:202] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 166, in get_weibo_info
+    weibos, self.weibo_id_list, to_continue = PageParser(
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 47, in __init__
+    info = self.selector.xpath("//div[@class='c']")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2023-08-31 21:20:18,923 - WARNING - util.py[:102] - 当前账号没有浏览该视频的权限
+2023-08-31 21:20:18,925 - ERROR - page_parser.py[:306] - local variable 'video_url' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 304, in get_video_url
+    video_url = to_video_download_url(self.cookie, video_page_url)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 104, in to_video_download_url
+    return video_url
+UnboundLocalError: local variable 'video_url' referenced before assignment
+2023-08-31 21:43:51,248 - WARNING - util.py[:102] - 当前账号没有浏览该视频的权限
+2023-08-31 21:43:51,249 - ERROR - page_parser.py[:306] - local variable 'video_url' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 304, in get_video_url
+    video_url = to_video_download_url(self.cookie, video_page_url)
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\util.py", line 104, in to_video_download_url
+    return video_url
+UnboundLocalError: local variable 'video_url' referenced before assignment
