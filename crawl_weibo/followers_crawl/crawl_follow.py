@@ -1,12 +1,20 @@
 import json
+import os
 import random
+
 import requests
 from time import sleep
 
+proxies = {
+    'http': "http://159.138.218.175",
+    'https': "http://159.138.218.175"
+}
+
 
 class Crawl_follow:
-    def __init__(self, user_id):
-        self.table_fans = []
+
+    def __init__(self, user_id, list_fans):
+        self.table_fans = list_fans
         self.table_follow = []
         self.user_id = user_id
 
@@ -41,7 +49,7 @@ class Crawl_follow:
 
     # 获取内容并解析
     def get_and_parse1(self, url):
-        res = requests.get(url)
+        res = requests.get(url, proxies=proxies)
         cards = res.json()['data']['cards']
         info_list = []
         try:
@@ -86,7 +94,8 @@ class Crawl_follow:
 
     # 获取内容并解析
     def get_and_parse2(self, url, data):
-        res = requests.get(url, headers=self.get_random_ua(), data=data)
+        print(url)
+        res = requests.get(url, headers=self.get_random_ua(), data=data, proxies=proxies)
         sleep(3)
         info_list = []
         if res.json()['ok'] == 0:
@@ -104,6 +113,7 @@ class Crawl_follow:
                 "name": user_name,
                 "fans_cont": fans_count,
             }
+            print(info)
             info_list.append(info)
         if "page" in data:
             print("第{}页关注信息爬取完毕...".format(data['page']))
@@ -128,7 +138,7 @@ class Crawl_follow:
     def get_followers(self, num):
         url2 = "https://m.weibo.cn/api/container/getIndex?containerid=231051_-_fans_-_{}&since_id={}".format(
             self.user_id,
-            num)
+            (int(num) - 1) * 15 + 1)
         data2 = {
             "containerid": "231051_-_fans_-_" + self.user_id,
             "since_id": num
@@ -136,36 +146,66 @@ class Crawl_follow:
 
         return self.get_and_parse2(url2, data2)
 
+    def deleteDuplicate(self, li):
+        delet_dup = []
+        for i in li:
+            if i not in delet_dup:
+                delet_dup.append(i)
+
+        return delet_dup
+
     def save_info(self):
+        print(self.table_fans)
+        set_fans = self.deleteDuplicate(self.table_fans)
+        set_follow = self.deleteDuplicate(self.table_follow)
         with open(self.user_id + 'fans.json', 'w', encoding='utf-8') as writer:
-            for i in self.table_fans:
+            for i in set_fans:
                 writer.write(json.dumps(i, ensure_ascii=False))
                 writer.write('\n')
         with open(self.user_id + 'follower.json', 'w', encoding='utf-8') as writer:
-            for i in self.table_follow:
+            for i in set_follow:
                 writer.write(json.dumps(i, ensure_ascii=False))
                 writer.write('\n')
 
 
 def crawl_follow(user_id):
-    crawl = Crawl_follow(user_id)
-    crawl.get_first_page()
-    page = 2
-    while True:
-        if crawl.get_follow(page):
-            break
-        page += 1
-    page = 2
-    while True:
-        if crawl.get_followers(page):
-            break
-        page += 1
-    crawl.save_info()
+    list_ = []
+    if os.path.exists(user_id + 'fans' + '.json'):
+        with open(user_id + 'fans' + '.json', 'r', encoding='utf-8') as reader:
+            for row in reader:
+                row_json = json.loads(row)
+                list_.append(row_json)
+        num_list = len(list_) // 15
+        crawl = Crawl_follow(user_id, list_fans=list_)
+        page = 2
+        while True:
+            if crawl.get_follow(page):
+                break
+            page += 1
+        for i in range(num_list, 500):
+            if crawl.get_followers(i):
+                break
+        crawl.save_info()
+    else:
+        crawl = Crawl_follow(user_id, list_fans=[])
+        crawl.get_first_page()
+        page = 2
+        while True:
+            if crawl.get_follow(page):
+                break
+            page += 1
+        for i in range(1, 500):
+            if crawl.get_followers(i):
+                break
+        crawl.save_info()
 
 
 if __name__ == '__main__':
-    with open('../list_bozhu.txt', 'r', encoding='utf-8') as reader:
-        for row in reader:
-            id = row.split()[1]
-            print(id)
-            crawl_follow(id)
+    # with open('../list_bozhu.txt', 'r', encoding='utf-8') as reader:
+    #     for row in reader:
+    #         id = row.split()[1]
+    #         print(id)
+    #         crawl_follow(id)
+    id_list = ['5640157596']
+    for id in id_list:
+        crawl_follow(id)

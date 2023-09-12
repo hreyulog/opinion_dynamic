@@ -2,6 +2,7 @@ import csv
 import json
 from snownlp import SnowNLP
 
+
 def sentiment(user_id):
     dict_blog = {}
     dict_score_comment = {}
@@ -22,7 +23,7 @@ def sentiment(user_id):
             else:
                 dict_score_comment[id].append((score_comment, comment_likes))
 
-    with open(user_id+'output.json', 'w', encoding='utf-8') as writer:
+    with open(user_id + 'output.json', 'w', encoding='utf-8') as writer:
         for id in dict_blog:
             writer.write(json.dumps({'id': id,
                                      'content': dict_blog[id]['content'],
@@ -35,4 +36,4 @@ def sentiment(user_id):
 
 
 if __name__ == "__main__":
-    sentiment('6048569942')
+    sentiment('2022252207')
