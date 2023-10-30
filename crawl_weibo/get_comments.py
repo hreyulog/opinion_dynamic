@@ -6,14 +6,14 @@ import requests
 
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'
 headers = {'User_Agent': user_agent,
-           'cookie': "_T_WM=04880d5f124d730ad5e2d22b35445f37; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWOd-2y5aQMBANronYeI7nO5JpX5K-hUgL.FoM0Shn7S0z0She2dJLoI7yQMJH4Ugpa97tt; MLOGIN=1; SCF=ArwBbgYGS-iqpxaFehhbJNxigFFCyq_Ea-EVTsARvUjaKRWcE-9NLsoOA_uw2d6RIXS9Jy5xV7lZl4q2uNxM1zg.; SUB=_2A25J9BJHDeRhGeFN71oR9yzPzz-IHXVrFr4PrDV6PUJbktAGLU3FkW1NQA0nMSR2QgDPwwF4tiLOI8Y_rCzeHvc4; SSOLoginState=1693475352; ALF=1696067352; M_WEIBOCN_PARAMS=lfid%3D231051_-_followers_-_6048569942%26luicode%3D20000174; WEIBOCN_FROM=1110106030"
+           'cookie': "SCF=ArwBbgYGS-iqpxaFehhbJNxigFFCyq_Ea-EVTsARvUjaKRWcE-9NLsoOA_uw2d6RIXS9Jy5xV7lZl4q2uNxM1zg.; SSOLoginState=1697808790; ALF=1700400790; loginScene=102003; geetest_token=98293314bbe5407752e972b667dcf7f0; SUB=_2A25INvIYDeRhGeFG7FUU8yfOyDmIHXVr2J5QrDV6PUJbkdANLW3BkW1NeMEjPiH847_Xelv2J8X79yG8t8HT4TAu; MLOGIN=1; _T_WM=89205870901; M_WEIBOCN_PARAMS=luicode%3D20000174%26lfid%3D102803"
            }
 
 
 def get_comments(user_id):
     dict_weibo = {}
     filename = user_id + '.csv'
-    with open(filename, 'r', encoding='utf-8') as f:
+    with open('weibo/' + filename, 'r', encoding='utf-8') as f:
         csv_reader = csv.DictReader(f)
         for row in csv_reader:
             id_weibo, content, time, likes = row['\ufeff微博id'], row['微博正文'], row['发布时间'], row['点赞数']
@@ -56,4 +56,4 @@ def get_comments(user_id):
 
 
 if __name__ == "__main__":
-    get_comments('6048569942')
+    get_comments('2022252207')
