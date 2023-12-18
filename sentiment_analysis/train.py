@@ -66,13 +66,13 @@ embedding_matrix = embedding_matrix.astype('float32')
 train_pad = pad_sequences(train_tokens, maxlen=max_tokens,
                           padding='pre', truncating='pre')
 train_pad[train_pad >= num_words] = 0
-train_target = np.concatenate((np.ones(24693), np.zeros(24693)))
+train_target = np.concatenate((np.ones(42964), np.zeros(42964)))
 
 X_train, X_test, y_train, y_test = train_test_split(train_pad,
                                                     train_target,
                                                     test_size=0.1,
                                                     random_state=12)
-
+np.where(y_train, 0.7, 0.3)
 model = Sequential()
 model.add(Embedding(num_words,
                     embedding_dim,
@@ -106,7 +106,8 @@ model.fit(X_train, y_train,
           callbacks=callbacks)
 model.save('sentiment')
 
-# model = keras.models.load_model("sentiment")
+model = keras.models.load_model("sentiment")
+print(X_test, y_test)
 result = model.evaluate(X_test, y_test)
 print('Accuracy:{0:.2%}'.format(result[1]))
 
@@ -134,18 +135,17 @@ def predict_sentiment(text):
     else:
         print('是一例负面评价', 'output=%.2f' % coef)
 
-
-test_list = [
-    '酒店设施不是新的，服务态度很不好',
-    '酒店卫生条件非常不好',
-    '床铺非常舒适',
-    '房间很凉，不给开暖气',
-    '房间很凉爽，空调冷气很足',
-    '酒店环境不好，住宿体验很不好',
-    '房间隔音不到位',
-    '晚上回来发现没有打扫卫生',
-    '因为过节所以要我临时加钱，比团购的价格贵',
-    '遥遥领先说的是价格和营销技术'
-]
-for text in test_list:
-    predict_sentiment(text)
+# test_list = [
+#     '酒店设施不是新的，服务态度很不好',
+#     '酒店卫生条件非常不好',
+#     '床铺非常舒适',
+#     '房间很凉，不给开暖气',
+#     '房间很凉爽，空调冷气很足',
+#     '酒店环境不好，住宿体验很不好',
+#     '房间隔音不到位',
+#     '晚上回来发现没有打扫卫生',
+#     '因为过节所以要我临时加钱，比团购的价格贵',
+#     '遥遥领先说的是价格和营销技术'
+# ]
+# for text in test_list:
+#     predict_sentiment(text)

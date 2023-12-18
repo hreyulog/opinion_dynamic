@@ -2,7 +2,6 @@ import csv
 import json
 
 import keras
-from snownlp import SnowNLP
 import re
 import jieba
 from keras.preprocessing.sequence import pad_sequences
@@ -20,19 +19,17 @@ def predict_sentiment(text, cn_model, model):
         except KeyError:
             cut_list[i] = 0
     # padding
-    tokens_pad = pad_sequences([cut_list], maxlen=116,
+    tokens_pad = pad_sequences([cut_list], maxlen=107,
                                padding='pre', truncating='pre')
     # 预测
     result = model.predict(x=tokens_pad)
     return result[0][0]
 
 
-def sentiment(user_id):
+def sentiment(user_id, model, cn_model):
+    print(user_id)
     dict_blog = {}
     dict_score_comment = {}
-    cn_model = KeyedVectors.load_word2vec_format('sentiment_analysis/sgns.weibo.bigram',
-                                                 binary=False)
-    model = keras.models.load_model("sentiment_analysis/sentiment")
 
     with open('crawl_weibo/weibo/comment' + user_id + '.csv.json', 'r', encoding='utf-8') as reader1:
         for row in reader1:
@@ -51,11 +48,11 @@ def sentiment(user_id):
             else:
                 dict_score_comment[id].append((score_comment, comment_likes))
 
-    with open(user_id + 'output.json', 'w', encoding='utf-8') as writer:
+    with open('crawl_weibo/' + user_id + 'output.json', 'w', encoding='utf-8') as writer:
         for id in dict_blog:
             writer.write(json.dumps({'id': id,
                                      'content': dict_blog[id]['content'],
-                                     'content_score': predict_sentiment(comment, cn_model, model),
+                                     'content_score': predict_sentiment(dict_blog[id]['content'], cn_model, model),
                                      'time': dict_blog[id]['time'],
                                      'likes': dict_blog[id]['likes'],
                                      'comment_score': dict_score_comment[id]
@@ -64,9 +61,13 @@ def sentiment(user_id):
 
 
 if __name__ == "__main__":
-    for id in ['2561744167']:
-        sentiment(id)
-    # with open('list_bozhu.txt', 'r', encoding='utf-8') as reader:
-    #     for row in reader:
-    #         id = row.split()[1]
-    #         sentiment(id)
+    # for id in ['2561744167']:
+    #     sentiment(id)
+    cn_model = KeyedVectors.load_word2vec_format('sentiment_analysis/sgns.weibo.bigram',
+                                                 binary=False)
+    model = keras.models.load_model("sentiment_analysis/sentiment")
+    with open('list_bozhu.txt', 'r', encoding='utf-8') as reader:
+        for row in reader:
+            id = row.split()[1]
+            # if id not in ['2022252207', '2561744167', '5821279480', '7109370363']:
+            sentiment(id, model, cn_model)
