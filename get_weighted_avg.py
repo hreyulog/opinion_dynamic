@@ -1,15 +1,11 @@
 import json
-from datetime import datetime, timedelta
-from collections import defaultdict
+from datetime import datetime
 import matplotlib.pyplot as plt
-from collections import Counter
-import keras
-from sentiment import predict_sentiment
 
-from gensim.models import KeyedVectors
+plt.rcParams["font.sans-serif"] = ["SimHei"]  # 设置字体
+plt.rcParams["axes.unicode_minus"] = False  # 正常显示负号
 
-plt.rcParams["font.sans-serif"]=["SimHei"] #设置字体
-plt.rcParams["axes.unicode_minus"]=False #正常显示负号
+
 def get_weighted_avg(dim2list):
     sum_all = 0
     cont = 0
@@ -58,14 +54,13 @@ def commen_value(user_id):
     dict_like = {}
     dict_week_avg = {}
 
-    with open('crawl_weibo/' + user_id + 'output.json', 'r', encoding='utf-8') as reader:
+    with open(user_id + 'output.json', 'r', encoding='utf-8') as reader:
         for row in reader:
             json_row = json.loads(row)
             dict_time[json_row['time']] = json_row['comment_score']
             dict_like[json_row['time']] = int(json_row['likes'])
     for time in dict_time:
         dict_avg.append((time.split(' ')[0], (get_weighted_avg(dict_time[time]), dict_like[time])))
-    print(dict_avg)
     week_dict = get_oneweek_list(dict_avg)
     for week in week_dict:
         dict_week_avg[week] = get_weighted_avg(week_dict[week])
@@ -74,7 +69,7 @@ def commen_value(user_id):
 
 def blog_value(user_id):
     dict_res = {}
-    with open('crawl_weibo/' + user_id + 'output.json', 'r', encoding='utf-8') as reader:
+    with open(user_id + 'output.json', 'r', encoding='utf-8') as reader:
         for row in reader:
             json_row = json.loads(row)
             dict_res[json_row['time'].split()[0]] = json_row['content_score']
@@ -83,15 +78,14 @@ def blog_value(user_id):
 
 
 if __name__ == "__main__":
-
     dict_user_id = {}
-    name_user={}
+    name_user = {}
     with open('list_bozhu.txt', 'r', encoding='utf-8') as reader:
         for row in reader:
             id = row.split()[1]
-            name=row.split()[0]
+            name = row.split()[0]
             dict_user_id[id] = commen_value(id)
-            name_user[id]=name
+            name_user[id] = name
     fig, ax = plt.subplots()
     ind = 1
     for i in dict_user_id:
@@ -132,14 +126,12 @@ if __name__ == "__main__":
                 res[j] = {i: dict_user_id[i][j]}
             else:
                 res[j][i] = dict_user_id[i][j]
-
     time_dict = {}
     for time in res:
-        if len(res[time]) >= 7:
-            # print(time)
+        if len(res[time]) >= 7  and time != '2023-05-01':
             time_dict[time] = res[time]
-    sorted_dict=sorted(dict_user_id.keys())
-    print(sorted_dict)
+    print(time_dict)
+    sorted_dict = sorted(dict_user_id.keys())
     for user_id in sorted_dict:
         x = []
         y = []
@@ -148,6 +140,6 @@ if __name__ == "__main__":
             # plt.axvline(time_dt)
             x.append(time_dt)
             y.append(time_dict[time][user_id])
-        plt.plot(x, y,label=name_user[user_id])
+        plt.plot(x, y, label=name_user[user_id])
     plt.legend(loc=2)
     plt.show()  # 图形可视化

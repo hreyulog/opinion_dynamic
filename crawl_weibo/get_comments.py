@@ -6,20 +6,10 @@ import requests
 
 user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'
 headers = {'User_Agent': user_agent,
-           'cookie': "SCF=ArwBbgYGS-iqpxaFehhbJNxigFFCyq_Ea-EVTsARvUjaKRWcE-9NLsoOA_uw2d6RIXS9Jy5xV7lZl4q2uNxM1zg.; SSOLoginState=1697808790; ALF=1700400790; loginScene=102003; geetest_token=98293314bbe5407752e972b667dcf7f0; SUB=_2A25INvIYDeRhGeFG7FUU8yfOyDmIHXVr2J5QrDV6PUJbkdANLW3BkW1NeMEjPiH847_Xelv2J8X79yG8t8HT4TAu; MLOGIN=1; _T_WM=89205870901; M_WEIBOCN_PARAMS=luicode%3D20000174%26lfid%3D102803"
+           'cookie': "WEIBOCN_FROM=1110006030; _T_WM=19135211362; SCF=AnztgX4oKCLbIbB1eDU_hCTt_VGGlmd1lvu7XWA1q0LGUZJaUC-ReY492bbEIk8uDpcyF-R53fKNKB2sn9jGG9s.; SUB=_2A25LRzwPDeRhGeFG7FUU8yfOyDmIHXVoPTHHrDV6PUJbktAbLUHjkW1NeMEjPgsAIgGq1njZRZFzT7vY2-DCml6z; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W59zBl._dzhJIHPO0wPOXmc5NHD95QN1hMNSKe4eoefWs4DqcjMi--NiK.Xi-2Ri--ciKnRi-zNS0nNS0-01Kz0SBtt; SSOLoginState=1715686495; ALF=1718278495; XSRF-TOKEN=ae008e; MLOGIN=1; mweibo_short_token=be9f7de7f8; M_WEIBOCN_PARAMS=luicode%3D20000174%26uicode%3D20000174"
            }
-
-
-def get_comments(user_id):
-    dict_weibo = {}
-    filename = user_id + '.csv'
-    with open('weibo/' + filename, 'r', encoding='utf-8') as f:
-        csv_reader = csv.DictReader(f)
-        for row in csv_reader:
-            id_weibo, content, time, likes = row['\ufeff微博id'], row['微博正文'], row['发布时间'], row['点赞数']
-            if 'huawei' in content or '华为' in content:
-                dict_weibo[id_weibo] = {'content': content, 'time': time, 'likes': likes}
-    with open('weibo/comment' + filename + '.json', 'w', encoding='utf-8') as writer:
+def writetheme(pinpai, dict_weibo, filename):
+    with open('weibo/comment' + filename + pinpai + '.json', 'w', encoding='utf-8') as writer:
         for id in dict_weibo:
             print(id)
             page = 1
@@ -33,8 +23,11 @@ def get_comments(user_id):
                         break
                     url = 'https://m.weibo.cn/comments/hotflow?id={}&mid={}&max_id_type=0&max_id={}'.format(id, id,
                                                                                                             max_id)
+                print(url)
                 r = requests.get(url, headers=headers)
-                print(r.json())
+                print(r.status_code)
+                if r.status_code==500:
+                    break
                 if r.json()['ok'] == 0:
                     break
                 datas = r.json()['data']['data']
@@ -55,5 +48,42 @@ def get_comments(user_id):
                 max_id = str(r.json()['data']['max_id'])
 
 
+def checkhuawei(content):
+    return 'huawei' in content or '华为' in content or 'nova' in content
+
+
+def checkxiaomi(content):
+    return 'xiaomi' in content or '小米' in content or '米家' in content
+
+
+def checkpingguo(content):
+    return 'apple' in content or '苹果' in content or 'iphone' in content or 'ipad' in content or 'mac' in content
+
+
+def get_comments(user_id):
+    dict_weibo_huawei = {}
+    dict_weibo_xiaomi = {}
+    dict_weibo_pingguo = {}
+    dict_weibo_all = {}
+    filename = user_id + '.csv'
+    with open('weibo/' + filename, 'r', encoding='utf-8') as f:
+        csv_reader = csv.DictReader(f)
+        for row in csv_reader:
+            id_weibo, content, time, likes = row['微博id'], row['微博正文'], row['发布时间'], row['点赞数']
+            content = content.lower()
+            if checkhuawei(content) and checkpingguo(content) and checkxiaomi(content):
+                dict_weibo_all[id_weibo] = {'content': content, 'time': time, 'likes': likes}
+            if checkhuawei(content):
+                dict_weibo_huawei[id_weibo] = {'content': content, 'time': time, 'likes': likes}
+            elif checkxiaomi(content):
+                dict_weibo_xiaomi[id_weibo] = {'content': content, 'time': time, 'likes': likes}
+            elif checkpingguo(content):
+                dict_weibo_pingguo[id_weibo] = {'content': content, 'time': time, 'likes': likes}
+    # writetheme(pinpai='huawei', dict_weibo=dict_weibo_huawei, filename=user_id)
+    writetheme(pinpai='xiaomi', dict_weibo=dict_weibo_xiaomi, filename=user_id)
+    writetheme(pinpai='pingguo', dict_weibo=dict_weibo_pingguo, filename=user_id)
+    # writetheme(pinpai='all', dict_weibo=dict_weibo_all, filename=user_id)
+
+
 if __name__ == "__main__":
-    get_comments('2022252207')
+    get_comments('7239083016')
