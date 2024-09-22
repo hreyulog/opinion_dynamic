@@ -4076,3 +4076,64 @@ Traceback (most recent call last):
   File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 47, in __init__
     info = self.selector.xpath("//div[@class='c']")
 AttributeError: 'NoneType' object has no attribute 'xpath'
+2024-01-26 14:45:53,512 - ERROR - spider.py[:202] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 166, in get_weibo_info
+    weibos, self.weibo_id_list, to_continue = PageParser(
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\page_parser.py", line 47, in __init__
+    info = self.selector.xpath("//div[@class='c']")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2024-01-26 14:48:55,192 - ERROR - index_parser.py[:46] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 34, in get_user
+    user_id = self._get_user_id()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 21, in _get_user_id
+    url_list = self.selector.xpath("//div[@class='u']//a")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2024-01-26 14:48:55,199 - ERROR - spider.py[:217] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2024-01-26 14:48:55,199 - ERROR - csv_writer.py[:25] - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\csv_writer.py", line 20, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-01-26 14:48:56,144 - ERROR - index_parser.py[:58] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 51, in get_page_num
+    if self.selector.xpath("//input[@name='mp']") == []:
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2024-01-26 14:48:56,145 - ERROR - spider.py[:202] - unsupported operand type(s) for +: 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 164, in get_weibo_info
+    for page in tqdm(range(1, page_num + 1), desc='Progress'):
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+2024-01-26 14:51:35,938 - ERROR - index_parser.py[:46] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 34, in get_user
+    user_id = self._get_user_id()
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 21, in _get_user_id
+    url_list = self.selector.xpath("//div[@class='u']//a")
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2024-01-26 14:51:35,944 - ERROR - spider.py[:217] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 207, in _get_filepath
+    dir_name = self.user.nickname
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2024-01-26 14:51:35,945 - ERROR - csv_writer.py[:25] - expected str, bytes or os.PathLike object, not NoneType
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\writer\csv_writer.py", line 20, in __init__
+    with open(self.file_path, 'a', encoding='utf-8-sig',
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+2024-01-26 14:51:36,936 - ERROR - index_parser.py[:58] - 'NoneType' object has no attribute 'xpath'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\parser\index_parser.py", line 51, in get_page_num
+    if self.selector.xpath("//input[@name='mp']") == []:
+AttributeError: 'NoneType' object has no attribute 'xpath'
+2024-01-26 14:51:36,936 - ERROR - spider.py[:202] - unsupported operand type(s) for +: 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "C:\Users\hWX1082773\PycharmProjects\pythonProject\opinion_dynamic\opinion_dynamic\crawl_weibo\weiboSpider\weibo_spider\spider.py", line 164, in get_weibo_info
+    for page in tqdm(range(1, page_num + 1), desc='Progress'):
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
